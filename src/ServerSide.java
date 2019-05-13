@@ -5,30 +5,6 @@ import java.net.Socket;
 public class ServerSide {
     ServerSide() throws IOException {
         createConnection();
-        /*
-        try (ServerSocket serverSocket = new ServerSocket(8082)) {
-            Thread serverThread = new Thread(() -> {
-                BufferedReader serverReader;
-                Writer serverWriter;
-                while (true) {
-                    try {
-                        Socket connection = serverSocket.accept();
-                        //connection = serverSocket.accept();
-                        serverReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                        serverWriter = new BufferedWriter(new OutputStreamWriter(connection.getOutputStream()));
-                        serverWriter.write("hello, " + serverReader.readLine() + "\n");
-                        serverWriter.flush();
-                        System.out.println("a");
-                    } catch (IOException ex) {
-                        System.out.println(ex.getMessage() + "sdfgdsb");
-                    }
-                }
-            });
-            serverThread.setDaemon(true);
-            serverThread.start();
-        }
-
-        */
     }
 
     private void createConnection() throws IOException {
@@ -50,7 +26,6 @@ public class ServerSide {
                     t.printStackTrace();
                     throw t;
                 }
-                System.out.println("s");
             }
         });
         serverThread.setDaemon(true);
