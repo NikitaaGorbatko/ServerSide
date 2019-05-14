@@ -25,13 +25,18 @@ public class PostgreJungler {
     private void make() throws SQLException {
         reconnectIfDropped();
         Statement statement = connection.createStatement();
-        statement.execute("CREATE TABLE Peasdfghrsons (\n" +
-                "    PersonID int,\n" +
-                "    LastName varchar(255),\n" +
-                "    FirstName varchar(255),\n" +
-                "    Address varchar(255),\n" +
-                "    City varchar(255)\n" +
-                ");");
+        statement.execute("CREATE TABLE IF NOT EXISTS User (" +
+                "user_id int,\n" +
+                "name varchar(120),\n" +
+                "@mail varchar(254));");
+        statement.execute("CREATE TABLE IF NOT EXISTS Language (" +
+                "language varchar(100) PRIMARY KEY;);");
+        statement.execute("CREATE TABLE IF NOT EXISTS Word_set (" +
+                "word_set_id int,\n" +
+                "account_id int,\n" +
+                "name_set int,\n" +
+                "description_set varchar(120),\n" +
+                "cost int);");//stop
         statement.close();
     }
 }
